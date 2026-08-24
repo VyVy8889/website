@@ -2491,9 +2491,9 @@
                                             
                                             <div 
                                                 onClick={() => handleOpenDetail(product.id)}
-                                                className="aspect-[4/3] bg-slate-100 relative overflow-hidden cursor-pointer block"
+                                                className="aspect-[4/3] bg-white relative overflow-hidden cursor-pointer block border-b border-slate-100"
                                             >
-                                                <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                                                <img src={product.image} alt={product.name} className="w-full h-full object-contain p-6 group-hover:scale-105 transition-transform duration-500" />
                                                 <div className="absolute top-3 left-3 bg-navy-900/90 text-white text-[10px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wider">
                                                     {product.id}
                                                 </div>
