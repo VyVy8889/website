@@ -2521,6 +2521,8 @@
                                     <form 
     onSubmit={(e) => {
         e.preventDefault();
+      // Đóng popup khi bấm Gửi:
+    setIsQuoteOpen(false);
 
         // 1. Dữ liệu lấy từ các ô nhập liệu
         const templateParams = {
