@@ -2905,7 +2905,23 @@
                 ]
             },
         ];
-
+        const CERTIFICATES = [
+        { 
+        id: 'cert-1', 
+        title: 'VLUUKE Exclusive Distribution Certification', 
+        image: 'https://github.com/VyVy8889/website/blob/main/images/Vluuke.png?raw=true' // <-- BẠN DÁN LINK ẢNH VÀO ĐÂY
+        },
+        { 
+        id: 'cert-2', 
+        title: 'FUZRR Distribution Authorization Letter', 
+        image: 'https://github.com/VyVy8889/website/blob/main/images/Fuzrr.png?raw=true' // <-- BẠN DÁN LINK ẢNH VÀO ĐÂY
+        },
+        { 
+        id: 'cert-3', 
+        title: 'Chứng nhận Trung tâm Bảo hành', 
+        image: 'https://link-anh-giay-chung-nhan-2.jpg' // <-- BẠN DÁN LINK ẢNH VÀO ĐÂY
+        }
+        ];
         const CLIENTS = [
             { 
                 name: "Công ty CP Công nghiệp LME", 
@@ -2955,6 +2971,7 @@
             const [quoteProduct, setQuoteProduct] = useState('');
             const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
             const [view, setView] = useState('home'); // 'home' hoặc 'detail'
+            const [selectedCert, setSelectedCert] = React.useState(null);
             const [selectedProductId, setSelectedProductId] = useState('ES3030');
             const [selectedCategory, setSelectedCategory] = useState('all');
             const [searchQuery, setSearchQuery] = useState('');
@@ -3082,42 +3099,48 @@
                     </div>
 
                     {/* Navbar */}
-                    <header className="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm">
-                        <div className="max-w-7xl mx-auto px-4 md:px-8 py-3.5 flex justify-between items-center">
-                            <button onClick={() => { setView('home'); window.scrollTo({top: 0, behavior: 'smooth'}); }} className="flex items-center gap-3 group text-left">
-                               {/*Thay thế bằng logo 168*/} 
-                                <img 
-                                    src="https://168energy.vn/wp-content/uploads/2026/04/NLP-energy-logo.png" 
-                                    alt="168 Energy Logo" 
-                                    className="w-16 sm:w-24 h-auto object-contain rounded-xl" 
-                                />
-                                <div>
-                                    <div className="font-extrabold text-lg md:text-xl text-navy-900 tracking-tight flex items-center gap-1">
-                                        168 <span className="text-brand-orange">ENERGY</span>
-                                    </div>
-                                    <p className="text-[11px] text-slate-500 font-medium tracking-wide">Năng lượng cho sự phát triển</p>
-                                </div>
-                            </button>
+<header className="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm">
+    <div className="max-w-7xl mx-auto px-4 md:px-8 py-3.5 flex justify-between items-center">
+        <button onClick={() => { setView('home'); window.scrollTo({top: 0, behavior: 'smooth'}); }} className="flex items-center gap-3 group text-left">
+            {/* Logo 168 Energy */} 
+            <img 
+                src="https://168energy.vn/wp-content/uploads/2026/04/NLP-energy-logo.png" 
+                alt="168 Energy Logo" 
+                className="w-16 sm:w-24 h-auto object-contain rounded-xl" 
+            />
+            <div>
+                <div className="font-extrabold text-lg md:text-xl text-navy-900 tracking-tight flex items-center gap-1">
+                    168 <span className="text-brand-orange">ENERGY</span>
+                </div>
+                <p className="text-[11px] text-slate-500 font-medium tracking-wide">Năng lượng cho sự phát triển</p>
+            </div>
+        </button>
 
-                            <nav className="hidden lg:flex items-center gap-7 font-medium text-sm text-slate-700">
-                                <button onClick={() => setView('home')} className={`hover:text-brand-orange transition ${view === 'home' ? 'text-brand-orange font-bold' : ''}`}>Trang chủ</button>
-                                <a href="#gioi-thieu" onClick={() => setView('home')} className="hover:text-brand-orange transition">Giới thiệu</a>
-                                <a href="#san-pham" onClick={() => setView('home')} className="hover:text-brand-orange transition">Sản phẩm</a>
-                                <a href="#dich-vu" onClick={() => setView('home')} className="hover:text-brand-orange transition">Dịch vụ kỹ thuật</a>
-                                <a href="#doi-tac" onClick={() => setView('home')} className="hover:text-brand-orange transition">Khách hàng & Dự án</a>
-                            </nav>
+        {/* Đổi hidden lg:flex thành hidden md:flex để hiển thị trên nhiều kích cỡ màn hình hơn */}
+        <nav className="hidden md:flex items-center gap-5 lg:gap-7 font-medium text-sm text-slate-700">
+            <button 
+                onClick={() => { setView('home'); window.scrollTo({top: 0, behavior: 'smooth'}); }} 
+                className={`hover:text-brand-orange transition ${view === 'home' ? 'text-brand-orange font-bold' : ''}`}
+            >
+                Trang chủ
+            </button>
+            <a href="#gioi-thieu" onClick={() => setView('home')} className="hover:text-brand-orange transition">Giới thiệu</a>
+            <a href="#san-pham" onClick={() => setView('home')} className="hover:text-brand-orange transition">Sản phẩm</a>
+            <a href="#dich-vu" onClick={() => setView('home')} className="hover:text-brand-orange transition">Dịch vụ kỹ thuật</a>
+            <a href="#khach-hang" onClick={() => setView('home')} className="hover:text-brand-orange transition">Khách hàng & Dự án</a>
+        </nav>
 
-                            <div className="flex items-center gap-3">
-                                <button 
-                                    onClick={() => handleOpenQuote()}
-                                    className="bg-brand-orange hover:bg-brand-orangeHover text-white text-xs md:text-sm font-semibold px-4 md:px-5 py-2.5 rounded-lg shadow-md transition flex items-center gap-2"
-                                >
-                                    <i className="fa-solid fa-file-signature"></i>
-                                    <span>Yêu Cầu Báo Giá</span>
-                                </button>
-                            </div>
-                        </div>
-                    </header>
+        <div className="flex items-center gap-3">
+            <button 
+                onClick={() => handleOpenQuote()}
+                className="bg-brand-orange hover:bg-brand-orangeHover text-white text-xs md:text-sm font-semibold px-4 md:px-5 py-2.5 rounded-lg shadow-md transition flex items-center gap-2"
+            >
+                <i className="fa-solid fa-file-signature"></i>
+                <span>Yêu Cầu Báo Giá</span>
+            </button>
+        </div>
+    </div>
+</header>
 
                     {/* VIEW SWITCHER */}
                     {view === 'home' ? (
@@ -3355,27 +3378,109 @@
                             </section>
 
                             {/* Section Khách Hàng / Đối Tác */}
-                            <section id="doi-tac" className="py-16 bg-slate-100 border-t border-slate-200 px-4 md:px-8">
-                                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                                        {CLIENTS.map((client, idx) => (
-                                            <div key={idx} className="bg-white p-4 rounded-xl border border-slate-200/80 flex flex-col items-center justify-center text-center shadow-sm hover:shadow-md hover:border-brand-orange/30 transition-all group cursor-pointer">
-                                                {/* Khu vực hiển thị Logo */}
-                                                <div className="h-12 w-full flex items-center justify-center mb-3">
-                                                    <img 
-                                                        src={client.logo} 
-                                                        alt={client.name} 
-                                                        className="max-h-full max-w-full object-contain  group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
-                                                        onError={(e) => { e.target.style.display = 'none'; }} 
-                                                    />
-                                                </div>
-                                                {/* Tên công ty */}
-                                                <span className="text-[11px] font-bold text-slate-500 line-clamp-2 group-hover:text-brand-orange transition-colors">
-                                                    {client.name}
-                                                </span>
-                                            </div>
-                                        ))}
-                                    </div>
-                            </section>
+                            {/* Khối Khách hàng tiêu biểu */}
+                                {/* ========================================== */}
+{/* 1. KHỐI CHỨNG NHẬN & NĂNG LỰC (MỚI)        */}
+{/* ========================================== */}
+<section className="py-8 bg-navy-900 border-t border-slate-700">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-6">
+            <h2 className="text-xl md:text-3xl font-extrabold text-white">Chứng nhận & Năng lực</h2>
+            <p className="text-slate-400 mt-2 text-xs sm:text-sm mt-2">Đại diện phân phối và trung tâm bảo hành ủy quyền chính hãng tại Việt Nam</p>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
+            {CERTIFICATES.map(cert => (
+                <div 
+                    key={cert.id} 
+                    className="bg-navy-800 p-3 rounded-xl shadow-sm border border-slate-700 hover:shadow-md transition duration-300 group cursor-pointer"
+                    onClick={() => setSelectedCert(cert)}
+                >
+                    <img 
+                        src={cert.image} 
+                        alt={cert.title} 
+                        className="w-full h-32 md:h-40 object-contain rounded-lg mb-3 group-hover:opacity-80 transition" 
+                    />
+                    <h3 className="text-center text-xs md:text-sm font-semibold text-white group-hover:text-[#ea580c] transition">{cert.title}</h3>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+{/* ========================================== */}
+{/* 2. KHỐI KHÁCH HÀNG & ĐỐI TÁC (GIỮ NGUYÊN)  */}
+{/* ========================================== */}
+<section id="khach-hang" className="py-8 bg-navy-900 border-t border-slate-700">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-8">
+            <h2 className="text-xl md:text-3xl font-extrabold text-white">Khách hàng & Đối tác</h2>
+            <p className="text-slate-400 mt-2 text-xs sm:text-sm mt-2">Các doanh nghiệp, đối tác đã tin tưởng sử dụng dịch vụ của chúng tôi</p>
+        </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+            {CLIENTS.map((client, index) => (
+                <div 
+                    key={index} 
+                    className="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center justify-center h-36 hover:shadow-md transition duration-300"
+                >
+                    <img 
+                        src={client.logo} 
+                        alt={client.name} 
+                        className="h-14 md:h-16 w-full object-contain mb-3" 
+                    />
+                    <p className="text-center text-xs font-semibold text-slate-600 line-clamp-2">
+                        {client.name}
+                    </p>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+{/* ========================================== */}
+{/* 3. MODAL PHÓNG TO CHỨNG NHẬN (POPUP)     */}
+{/* ========================================== */}
+{selectedCert && (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm transition-opacity">
+        {/* Khung trắng bo góc */}
+        <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl overflow-hidden flex flex-col max-h-[90vh] relative animate-fade-in-up">
+            
+            {/* Nút X góc phải */}
+            <button 
+                onClick={() => setSelectedCert(null)}
+                className="absolute top-4 right-4 bg-slate-100 hover:bg-slate-200 text-slate-500 rounded-full w-8 h-8 flex items-center justify-center transition-colors z-10"
+            >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+
+            {/* Tiêu đề */}
+            <div className="px-6 py-5 border-b border-slate-100 pr-12">
+                <h3 className="text-lg md:text-xl font-bold text-slate-900">{selectedCert.title}</h3>
+            </div>
+
+            {/* Nội dung ảnh */}
+            <div className="p-6 overflow-y-auto flex justify-center bg-white">
+                <img 
+                    src={selectedCert.image} 
+                    alt={selectedCert.title} 
+                    className="max-w-full h-auto max-h-[60vh] object-contain rounded" 
+                />
+            </div>
+
+            {/* Chân Modal: Nút Cam */}
+            <div className="px-6 py-4 border-t border-slate-100 flex justify-end">
+                <button 
+                    onClick={() => setSelectedCert(null)}
+                    className="bg-[#ea580c] hover:bg-[#c2410c] text-white font-semibold py-2.5 px-6 rounded-lg transition-colors shadow-sm"
+                >
+                    Đóng
+                </button>
+            </div>
+            
+        </div>
+    </div>
+)}
 
                         </main>
                     ) : (
@@ -3705,7 +3810,7 @@
                             </div>
                         </div>
                     )}
-                    {/* Footer */}
+                                {/* Footer */}
                     <footer className="bg-navy-950 text-slate-400 text-xs py-10 border-t border-slate-800">
                         <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
                             {/* Cột 1: Thông tin công ty */}
