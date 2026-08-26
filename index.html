@@ -2972,6 +2972,7 @@
             const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
             const [view, setView] = useState('home'); // 'home' hoặc 'detail'
             const [selectedCert, setSelectedCert] = React.useState(null);
+            const [visibleCount, setVisibleCount] = React.useState(8);
             const [selectedProductId, setSelectedProductId] = useState('ES3030');
             const [selectedCategory, setSelectedCategory] = useState('all');
             const [searchQuery, setSearchQuery] = useState('');
@@ -3249,109 +3250,122 @@
 
                             {/* Catalog Sản Phẩm */}
                             <section id="san-pham" className="py-16 md:py-20 px-4 md:px-8 max-w-7xl mx-auto w-full">
-                                <div className="text-center max-w-3xl mx-auto mb-12">
-                                    <h2 className="text-2xl sm:text-3xl font-extrabold text-navy-900 tracking-tight">
-                                        DANH MỤC THIẾT BỊ
-                                    </h2>
-                                    
+    <div className="text-center max-w-3xl mx-auto mb-12">
+        <h2 className="text-2xl sm:text-3xl font-extrabold text-navy-900 tracking-tight">
+            DANH MỤC THIẾT BỊ
+        </h2>
+    </div>
+
+    {/* Filter & Search */}
+    <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-8">
+        <div className="flex flex-wrap gap-2 w-full md:w-auto">
+            {[
+                { id: 'all', label: 'Tất cả sản phẩm' },
+                { id: 'tiepdia', label: 'Đo điện trở tiếp địa' },
+                { id: 'cachdien', label: 'Đo điện trở cách điện' },
+                { id: 'capngam', label: 'Dò cáp ngầm' },
+                { id: 'chatluongdiennang', label: 'Chất lượng điện năng' },
+                { id: 'tiso', label: 'Đo tỉ số biến' },
+                { id: 'caoap', label: 'Máy thử cao áp' },
+                { id: 'motchieu', label: 'Đo điện trở một chiều' },
+                { id: 'tiepxuc', label: 'Đo điện trở tiếp xúc' },
+                { id: 'vannang', label: 'Đồng hồ vạn năng/ Ampe kìm' },
+                { id: 'khac', label: 'Thiết bị khác' },
+            ].map(tab => (
+                <button
+                    key={tab.id}
+                    onClick={() => setSelectedCategory(tab.id)}
+                    className={`px-4 py-2 rounded-lg text-xs font-semibold transition ${
+                        selectedCategory === tab.id
+                            ? 'bg-navy-900 text-white shadow-md'
+                            : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
+                    }`}
+                >
+                    {tab.label}
+                </button>
+            ))}
+        </div>
+
+        <div className="relative w-full md:w-64">
+            <input
+                type="text"
+                placeholder="Tìm mã máy (ES3030, FR3025...)"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-9 pr-4 py-2 bg-white border border-slate-200 rounded-lg text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-orange"
+            />
+            <i className="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-slate-400 text-xs"></i>
+        </div>
+    </div>
+
+    {/* Product Grid */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* ĐÃ CHÈN LỆNH SLICE CẮT MẢNG Ở ĐÂY */}
+        {filteredProducts.slice(0, visibleCount).map(product => (
+            <div key={product.id} className="bg-white rounded-2xl border border-slate-200 hover:border-brand-orange/40 overflow-hidden smooth-shadow hover:shadow-xl transition-all duration-300 flex flex-col group">
+                
+                <div 
+                    onClick={() => handleOpenDetail(product.id)}
+                    className="aspect-[4/3] bg-white relative overflow-hidden cursor-pointer block border-b border-slate-100"
+                >
+                    <img src={product.image} alt={product.name} className="w-full h-full object-contain p-6 group-hover:scale-105 transition-transform duration-500" />
+                    <div className="absolute top-3 left-3 bg-navy-900/90 text-white text-[10px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wider">
+                        {product.id}
+                    </div>
+                </div>
+                
+                <div className="p-5 flex-1 flex flex-col justify-between">
+                    <div>
+                        <span className="text-[11px] font-semibold text-brand-orange uppercase tracking-wider">{product.categoryName}</span>
+                        
+                        <h3 
+                            onClick={() => handleOpenDetail(product.id)}
+                            className="font-bold text-slate-900 text-base mt-1 mb-2 line-clamp-2 cursor-pointer group-hover:text-brand-orange transition"
+                        >
+                            {product.name}
+                        </h3>
+
+                        <p className="text-slate-500 text-xs line-clamp-2 mb-4 leading-relaxed">
+                            {product.desc}
+                        </p>
+
+                        <div className="bg-slate-50 p-3 rounded-lg border border-slate-100 mb-4 space-y-1">
+                            {product.specsQuick.map((spec, i) => (
+                                <div key={i} className="text-[11px] text-slate-600 flex items-center gap-1.5">
+                                    <i className="fa-solid fa-circle-check text-emerald-500 text-[10px]"></i>
+                                    <span>{spec}</span>
                                 </div>
+                            ))}
+                        </div>
+                    </div>
 
-                                {/* Filter & Search */}
-                                <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-8">
-                                    <div className="flex flex-wrap gap-2 w-full md:w-auto">
-                                        {[
-                                            { id: 'all', label: 'Tất cả sản phẩm' },
-                                            { id: 'tiepdia', label: 'Đo điện trở tiếp địa' },
-                                            { id: 'cachdien', label: 'Đo điện trở cách điện' },
-                                            { id: 'capngam', label: 'Dò cáp ngầm' },
-                                            { id: 'chatluongdiennang', label: 'Chất lượng điện năng' },
-                                            { id: 'tiso', label: 'Đo tỉ số biến' },
-                                            { id: 'caoap', label: 'Máy thử cao áp' },
-                                            { id: 'motchieu', label: 'Đo điện trở một chiều' },
-                                            { id: 'tiepxuc', label: 'Đo điện trở tiếp xúc' },
-                                            { id: 'vannang', label: 'Đồng hồ vạn năng/ Ampe kìm' },
-                                            { id: 'khac', label: 'Thiết bị khác' },
-                                        ].map(tab => (
-                                            <button
-                                                key={tab.id}
-                                                onClick={() => setSelectedCategory(tab.id)}
-                                                className={`px-4 py-2 rounded-lg text-xs font-semibold transition ${
-                                                    selectedCategory === tab.id
-                                                        ? 'bg-navy-900 text-white shadow-md'
-                                                        : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
-                                                }`}
-                                            >
-                                                {tab.label}
-                                            </button>
-                                        ))}
-                                    </div>
+                    <div className="flex justify-center w-full">
+                        <button 
+                            onClick={() => handleOpenDetail(product.id)}
+                            className="px-6 bg-slate-100 hover:bg-slate-200 text-navy-900 font-semibold py-2.5 rounded-lg text-xs transition flex items-center justify-center gap-1.5"
+                        >
+                            <span>Xem chi tiết</span>
+                            <i className="fa-solid fa-angle-right text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        ))}
+    </div>
 
-                                    <div className="relative w-full md:w-64">
-                                        <input
-                                            type="text"
-                                            placeholder="Tìm mã máy (ES3030, FR3025...)"
-                                            value={searchQuery}
-                                            onChange={(e) => setSearchQuery(e.target.value)}
-                                            className="w-full pl-9 pr-4 py-2 bg-white border border-slate-200 rounded-lg text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-orange"
-                                        />
-                                        <i className="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-slate-400 text-xs"></i>
-                                    </div>
-                                </div>
-
-                                {/* Product Grid */}
-                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                                    {filteredProducts.map(product => (
-                                        <div key={product.id} className="bg-white rounded-2xl border border-slate-200 hover:border-brand-orange/40 overflow-hidden smooth-shadow hover:shadow-xl transition-all duration-300 flex flex-col group">
-                                            
-                                            <div 
-                                                onClick={() => handleOpenDetail(product.id)}
-                                                className="aspect-[4/3] bg-white relative overflow-hidden cursor-pointer block border-b border-slate-100"
-                                            >
-                                                <img src={product.image} alt={product.name} className="w-full h-full object-contain p-6 group-hover:scale-105 transition-transform duration-500" />
-                                                <div className="absolute top-3 left-3 bg-navy-900/90 text-white text-[10px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wider">
-                                                    {product.id}
-                                                </div>
-                                            </div>
-                                            
-                                            <div className="p-5 flex-1 flex flex-col justify-between">
-                                                <div>
-                                                    <span className="text-[11px] font-semibold text-brand-orange uppercase tracking-wider">{product.categoryName}</span>
-                                                    
-                                                    <h3 
-                                                        onClick={() => handleOpenDetail(product.id)}
-                                                        className="font-bold text-slate-900 text-base mt-1 mb-2 line-clamp-2 cursor-pointer group-hover:text-brand-orange transition"
-                                                    >
-                                                        {product.name}
-                                                    </h3>
-
-                                                    <p className="text-slate-500 text-xs line-clamp-2 mb-4 leading-relaxed">
-                                                        {product.desc}
-                                                    </p>
-
-                                                    <div className="bg-slate-50 p-3 rounded-lg border border-slate-100 mb-4 space-y-1">
-                                                        {product.specsQuick.map((spec, i) => (
-                                                            <div key={i} className="text-[11px] text-slate-600 flex items-center gap-1.5">
-                                                                <i className="fa-solid fa-circle-check text-emerald-500 text-[10px]"></i>
-                                                                <span>{spec}</span>
-                                                            </div>
-                                                        ))}
-                                                    </div>
-                                                </div>
-
-                                                <div className="flex justify-center w-full">
-                                                <button 
-                                                onClick={() => handleOpenDetail(product.id)}
-                                                className="px-6 bg-slate-100 hover:bg-slate-200 text-navy-900 font-semibold py-2.5 rounded-lg text-xs transition flex items-center justify-center gap-1.5"
-                                                >
-                                                <span>Xem chi tiết</span>
-                                                <i className="fa-solid fa-angle-right text-[10px]"></i>
-                                                </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </section>
+    {/* ĐÃ BỔ SUNG NÚT TẢI THÊM NẰM DƯỚI CÙNG GRID */}
+    {visibleCount < filteredProducts.length && (
+        <div className="flex justify-center mt-10">
+            <button 
+                onClick={() => setVisibleCount(prev => prev + 6)} 
+                className="bg-white border-2 border-slate-200 text-navy-900 hover:text-brand-orange hover:border-brand-orange font-semibold py-2.5 px-8 rounded-full shadow-sm transition-all duration-300 flex items-center gap-2 group"
+            >
+                <span>Xem thêm sản phẩm</span>
+                <i className="fa-solid fa-arrow-down group-hover:translate-y-1 transition-transform"></i>
+            </button>
+        </div>
+    )}
+</section>
 
                             {/* Section Dịch Vụ Kỹ Thuật */}
                             <section id="dich-vu" className="py-16 bg-navy-900 text-white px-4 md:px-8 border-t border-slate-800">
