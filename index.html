@@ -3220,7 +3220,7 @@
                                             <i className="fa-solid fa-boxes-packing"></i>
                                         </div>
                                         <h3 className="font-bold text-navy-900 text-base">Sản phẩm chính hãng</h3>
-                                        <p className="text-slate-600 text-xs leading-relaxed">
+                                        <p className="text-slate-600 text-xs leading-relaxed text-justify">
                                             Nhập khẩu và phân phối trực tiếp từ các thương hiệu uy tín hàng đầu, đầy đủ CO/CQ và chứng từ hiệu chuẩn.
                                         </p>
                                     </div>
@@ -3230,7 +3230,7 @@
                                             <i className="fa-solid fa-user-gear"></i>
                                         </div>
                                         <h3 className="font-bold text-navy-900 text-base">Tư vấn kỹ thuật chuyên sâu</h3>
-                                        <p className="text-slate-600 text-xs leading-relaxed">
+                                        <p className="text-slate-600 text-xs leading-relaxed text-justify">
                                             Đội ngũ kỹ sư giàu kinh nghiệm, am hiểu sâu về thiết bị và ứng dụng thực tế, luôn tư vấn giải pháp phù hợp, lựa chọn dải đo chính xác và hỗ trợ hướng dẫn sử dụng tận nơi.
 
                                         </p>
@@ -3241,7 +3241,7 @@
                                             <i className="fa-solid fa-clock-rotate-left"></i>
                                         </div>
                                         <h3 className="font-bold text-navy-900 text-base">Bảo hành & Hỗ trợ 24/7</h3>
-                                        <p className="text-slate-600 text-xs leading-relaxed">
+                                        <p className="text-slate-600 text-xs leading-relaxed text-justify">
                                             Bảo hành chính hãng 12 tháng, hỗ trợ thiết bị thay thế trong thời gian bảo trì.
                                         </p>
                                     </div>
@@ -3368,23 +3368,23 @@
 </section>
 
                             {/* Section Dịch Vụ Kỹ Thuật */}
-                            <section id="dich-vu" className="py-16 bg-navy-900 text-white px-4 md:px-8 border-t border-slate-800">
+                            <section id="dich-vu" className="py-16 bg-white border border-slate-200/80 space-y-3">
                                 <div className="max-w-7xl mx-auto">
                                     <div className="text-center max-w-2xl mx-auto mb-12">
-                                        <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight">Dịch vụ kỹ thuật chuyên nghiệp</h2>
-                                        <p className="text-slate-400 text-xs sm:text-sm mt-2">
+                                        <h2 className="text-2xl sm:text-3xl text-navy-600 font-extrabold tracking-tight">Dịch vụ kỹ thuật chuyên nghiệp</h2>
+                                        <p className="text-slate-900 text-xs sm:text-sm mt-2">
                                             Không chỉ cung cấp thiết bị thử nghiệm điện, 168 Energy còn mang tới các giải pháp dịch vụ kỹ thuật điện toàn diện.
                                         </p>
                                     </div>
 
                                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                                         {SERVICES.map((s, idx) => (
-                                            <div key={idx} className="bg-navy-800 border border-slate-700/80 p-6 rounded-2xl hover:border-brand-orange transition">
-                                                <div className="w-12 h-12 bg-navy-900 border border-slate-700 text-brand-orange rounded-xl flex items-center justify-center text-xl font-bold mb-4">
+                                            <div key={idx} className="bg-slate-50 border border-slate-200/80 p-6 rounded-2xl hover:border-brand-orange transition">
+                                                <div className="w-12 h-12 bg-navy-900 border border-slate-700 text-brand-orange rounded-xl flex items-center justify-center text-xl font-bold mb-4 mx-auto">
                                                     <i className={`fa-solid ${s.icon}`}></i>
                                                 </div>
-                                                <h3 className="font-bold text-base text-white mb-2">{s.title}</h3>
-                                                <p className="text-slate-300 text-xs leading-relaxed">{s.desc}</p>
+                                                <h3 className="font-bold text-base text-navy-600 mb-2">{s.title}</h3>
+                                                <p className="text-navy-600 text-xs leading-relaxed text-justify">{s.desc}</p>
                                             </div>
                                         ))}
                                     </div>
@@ -3396,17 +3396,17 @@
                                 {/* ========================================== */}
 {/* 1. KHỐI CHỨNG NHẬN & NĂNG LỰC (MỚI)        */}
 {/* ========================================== */}
-<section className="py-8 bg-navy-900 border-t border-slate-700">
+<section className="py-8 bg-white border border-slate-200/80 space-y-3">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-6">
-            <h2 className="text-xl md:text-3xl font-extrabold text-white">Chứng nhận & Năng lực</h2>
-            <p className="text-slate-400 mt-2 text-xs sm:text-sm mt-2">Đại diện phân phối và trung tâm bảo hành ủy quyền chính hãng tại Việt Nam</p>
+            <h2 className="text-xl md:text-3xl font-extrabold text-navy-600">Chứng nhận & Năng lực</h2>
+            <p className="text-slate-900 mt-2 text-xs sm:text-sm mt-2">Đại diện phân phối và trung tâm bảo hành ủy quyền chính hãng tại Việt Nam</p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
             {CERTIFICATES.map(cert => (
                 <div 
                     key={cert.id} 
-                    className="bg-navy-800 p-3 rounded-xl shadow-sm border border-slate-700 hover:shadow-md transition duration-300 group cursor-pointer"
+                    className="bg-slate-50 p-3 rounded-xl shadow-sm bg-slate-50 border border-slate-200/80 hover:shadow-md transition duration-300 group cursor-pointer"
                     onClick={() => setSelectedCert(cert)}
                 >
                     <img 
@@ -3414,7 +3414,7 @@
                         alt={cert.title} 
                         className="w-full h-32 md:h-40 object-contain rounded-lg mb-3 group-hover:opacity-80 transition" 
                     />
-                    <h3 className="text-center text-xs md:text-sm font-semibold text-white group-hover:text-[#ea580c] transition">{cert.title}</h3>
+                    <h3 className="text-center text-xs md:text-sm font-semibold text-slate-900 group-hover:text-[#ea580c] transition">{cert.title}</h3>
                 </div>
             ))}
         </div>
@@ -3424,17 +3424,17 @@
 {/* ========================================== */}
 {/* 2. KHỐI KHÁCH HÀNG & ĐỐI TÁC (GIỮ NGUYÊN)  */}
 {/* ========================================== */}
-<section id="khach-hang" className="py-8 bg-navy-900 border-t border-slate-700">
+<section id="khach-hang" className="py-8 bg-white border-t border-slate-200/80">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8">
-            <h2 className="text-xl md:text-3xl font-extrabold text-white">Khách hàng & Đối tác</h2>
-            <p className="text-slate-400 mt-2 text-xs sm:text-sm mt-2">Các doanh nghiệp, đối tác đã tin tưởng sử dụng dịch vụ của chúng tôi</p>
+            <h2 className="text-xl md:text-3xl font-extrabold text-navy-600">Khách hàng & Đối tác</h2>
+            <p className="text-slate-900 mt-2 text-xs sm:text-sm mt-2">Các doanh nghiệp, đối tác đã tin tưởng sử dụng dịch vụ của chúng tôi</p>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
             {CLIENTS.map((client, index) => (
                 <div 
                     key={index} 
-                    className="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center justify-center h-36 hover:shadow-md transition duration-300"
+                    className="bg-slate-50 p-4 rounded-2xl shadow-sm border border-slate-200/80 flex flex-col items-center justify-center h-36 hover:shadow-md transition duration-300"
                 >
                     <img 
                         src={client.logo} 
