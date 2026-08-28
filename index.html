@@ -2909,17 +2909,17 @@
         { 
         id: 'cert-1', 
         title: 'VLUUKE Exclusive Distribution Certification', 
-        image: 'https://github.com/VyVy8889/website/blob/main/images/Vluuke.png?raw=true' // <-- LINK ẢNH
+        image: 'https://github.com/VyVy8889/website/blob/main/images/Vluuke.png?raw=true' // <-- BẠN DÁN LINK ẢNH VÀO ĐÂY
         },
         { 
         id: 'cert-2', 
         title: 'FUZRR Distribution Authorization Letter', 
-        image: 'https://github.com/VyVy8889/website/blob/main/images/Fuzrr.png?raw=true' // <-- LINK ẢNH
+        image: 'https://github.com/VyVy8889/website/blob/main/images/Fuzrr.png?raw=true' // <-- BẠN DÁN LINK ẢNH VÀO ĐÂY
         },
         { 
         id: 'cert-3', 
-        title: 'ISO 9001:2015', 
-        image: 'https://github.com/VyVy8889/website/blob/main/images/ISO%20168.png?raw=true' // <-- LINK ẢNH
+        title: 'Chứng nhận Trung tâm Bảo hành', 
+        image: 'https://link-anh-giay-chung-nhan-2.jpg' // <-- BẠN DÁN LINK ẢNH VÀO ĐÂY
         }
         ];
         const CLIENTS = [
@@ -3179,85 +3179,95 @@
                         /* GIAO DIỆN TRANG CHỦ */
                         <main className="flex-1">
                             {/* Hero Banner Section */}
-                            <section id="trang-chu" className="bg-navy-900 text-white relative overflow-hidden bg-grid-pattern py-16 lg:py-24 px-4 md:px-8 border-b border-slate-800">
-                                <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
-                                    <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-                                        
-                                        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight text-white">
-                                            PRECISE - RELIABLE  <br className="hidden sm:inline" />
-                                    
-                                        </h1>
+<section id="trang-chu" className="relative bg-navy-950 text-white overflow-hidden py-16 lg:py-24 px-4 md:px-8 border-b border-slate-800">
+    
+    {/* 1. LỚP ẢNH NỀN THỰC TẾ */}
+    {/* Sửa link ảnh trạm biến áp của bạn vào phần url('...') bên dưới */}
+    <div 
+        className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-70 grayscale-[30%]"
+        style={{ backgroundImage: "url('https://github.com/VyVy8889/website/blob/main/images/vecteezy_industrial-power-grid-illustration-for-energy-utility_82521553.jpg?raw=true')" }}
+    ></div>
 
-                                        <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto lg:mx-0 font-normal">
-                                            Thiết bị thí nghiệm và đo kiểm phục vụ kiểm tra, chẩn đoán và đánh giá hệ thống điện
-                                        </p>
+    {/* 2. LỚP PHỦ GRADIENT (OVERLAY) */}
+    {/* Lớp này giúp ảnh mờ đi và tối dần về bên trái, làm nổi bật dòng chữ trắng */}
+    <div className="absolute inset-0 z-0 bg-gradient-to-r from-navy-950 via-navy-900/80 to-navy-900/40"></div>
 
-                                        <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
-                                            <a href="#san-pham" className="bg-brand-orange hover:bg-brand-orangeHover text-white font-bold px-6 py-3.5 rounded-xl shadow-lg transition flex items-center gap-2.5 text-sm">
-                                                <span>Xem danh mục sản phẩm</span>
-                                                <i className="fa-solid fa-arrow-right"></i>
-                                            </a>
-                                            <a href="tel:0936.864.028" className="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold px-6 py-3.5 rounded-xl transition flex items-center gap-2 text-sm">
-                                                <i className="fa-solid fa-phone-volume text-brand-orange"></i>
-                                                <span>Hotline: 0936.864.028</span>
-                                            </a>
-                                        </div>
-
-                                        {/* Trust Stats */}
-                                        <div className="grid grid-cols-3 gap-4 pt-8 border-t border-slate-800/80 max-w-lg mx-auto lg:mx-0">
-                                            <div>
-                                                <p className="text-2xl lg:text-3xl font-black text-white">100%</p>
-                                                <p className="text-[11px] text-slate-400 font-medium mt-0.5">Chính hãng</p>
-                                            </div>
-                                            <div>
-                                                <p className="text-2xl lg:text-3xl font-black text-brand-orange">100+</p>
-                                                <p className="text-[11px] text-slate-400 font-medium mt-0.5">Khách hàng</p>
-                                            </div>
-                                            <div>
-                                                <p className="text-2xl lg:text-3xl font-black text-white">24/7</p>
-                                                <p className="text-[11px] text-slate-400 font-medium mt-0.5">Hỗ trợ kỹ thuật</p>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    
-    <div className="lg:col-span-5 relative">
-    {/* ĐÃ SỬA 1: Đổi justify-between thành justify-center để mọi thứ dồn vào giữa */}
-    <div className="relative rounded-2xl overflow-hidden border border-slate-700/80 shadow-2xl bg-navy-800 p-5 sm:p-6 flex flex-col justify-center h-[280px] sm:h-[320px]">
+    {/* 3. NỘI DUNG HERO BÊN TRÊN (Giữ nguyên) */}
+    <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+        <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
+            
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight text-white">
+                PRECISION - RELIABILITY  <br className="hidden sm:inline" />
         
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03] pointer-events-none"></div>
+            </h1>
 
-        {/* ĐÃ SỬA 2: Dùng margin-bottom (mb-6) để set khoảng cách cố định xuống logo */}
-        <div className="relative z-10 text-center mb-6">
-            <h3 className="text-white text-base sm:text-lg font-extrabold tracking-tight uppercase">ĐẠI DIỆN PHÂN PHỐI ĐỘC QUYỀN TẠI VIỆT NAM</h3>
-        </div>
+            <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto lg:mx-0 font-normal">
+                Thiết bị thí nghiệm và đo kiểm phục vụ kiểm tra, chẩn đoán và đánh giá hệ thống điện
+            </p>
 
-        {/* ĐÃ SỬA 3: Xóa 'my-auto' ở đây để không bị đẩy dãn dạt ra nữa */}
-        <div className="relative z-10 grid grid-cols-2 gap-4">
-            
-            {/* Hãng 1: VLUUKE */}
-            <div className="bg-white rounded-xl p-4 sm:p-6 flex flex-col items-center justify-center border-2 border-transparent hover:border-[#ea580c]/50 shadow-lg group transition-all duration-300 cursor-pointer">
-                <img 
-                    src="https://github.com/VyVy8889/website/blob/main/images/VLUUKE.png?raw=true" 
-                    alt="VLUUKE Exclusive Distributor" 
-                    className="w-full max-w-[120px] h-12 object-contain scale-900 group-hover:scale-110 transition-transform duration-500"
-                />
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+                <a href="#san-pham" className="bg-brand-orange hover:bg-brand-orangeHover text-white font-bold px-6 py-3.5 rounded-xl shadow-lg transition flex items-center gap-2.5 text-sm">
+                    <span>Xem danh mục sản phẩm</span>
+                    <i className="fa-solid fa-arrow-right"></i>
+                </a>
+                <a href="tel:0936.864.028" className="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold px-6 py-3.5 rounded-xl transition flex items-center gap-2 text-sm">
+                    <i className="fa-solid fa-phone-volume text-brand-orange"></i>
+                    <span>Hotline: 0936.864.028</span>
+                </a>
             </div>
-            
-            {/* Hãng 2: FUZRR */}
-            <div className="bg-white rounded-xl p-4 sm:p-6 flex flex-col items-center justify-center border-2 border-transparent hover:border-[#ea580c]/50 shadow-lg group transition-all duration-300 cursor-pointer">
-                <img 
-                    src="https://fuzrr.com/wp-content/uploads/2024/04/logo-2048x618.png" 
-                    alt="FUZRR Exclusive Distributor" 
-                    className="w-full max-w-[120px] h-12 object-contain scale-120 group-hover:scale-110 transition-transform duration-500"
-                />
+
+            {/* Trust Stats */}
+            <div className="grid grid-cols-3 gap-4 pt-8 border-t border-slate-800/80 max-w-lg mx-auto lg:mx-0">
+                <div>
+                    <p className="text-2xl lg:text-3xl font-black text-white">100%</p>
+                    <p className="text-[11px] text-slate-400 font-medium mt-0.5">Chính hãng</p>
+                </div>
+                <div>
+                    <p className="text-2xl lg:text-3xl font-black text-brand-orange">100+</p>
+                    <p className="text-[11px] text-slate-400 font-medium mt-0.5">Khách hàng</p>
+                </div>
+                <div>
+                    <p className="text-2xl lg:text-3xl font-black text-white">24/7</p>
+                    <p className="text-[11px] text-slate-400 font-medium mt-0.5">Hỗ trợ kỹ thuật</p>
+                </div>
             </div>
         </div>
+
         
+        <div className="lg:col-span-5 relative">
+            <div className="relative rounded-2xl overflow-hidden border border-slate-700/80 shadow-2xl bg-navy-800/80 backdrop-blur-md p-5 sm:p-6 flex flex-col justify-center h-[280px] sm:h-[320px]">
+                
+                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03] pointer-events-none"></div>
+
+                <div className="relative z-10 text-center mb-6">
+                    <h3 className="text-white text-base sm:text-lg font-extrabold tracking-tight uppercase">ĐẠI DIỆN PHÂN PHỐI ĐỘC QUYỀN TẠI VIỆT NAM</h3>
+                </div>
+
+                <div className="relative z-10 grid grid-cols-2 gap-4">
+                    
+                    {/* Hãng 1: VLUUKE */}
+                    <div className="bg-white rounded-xl p-4 sm:p-6 flex flex-col items-center justify-center border-2 border-transparent hover:border-[#ea580c]/50 shadow-lg group transition-all duration-300 cursor-pointer">
+                        <img 
+                            src="https://github.com/VyVy8889/website/blob/main/images/VLUUKE.png?raw=true" 
+                            alt="VLUUKE Exclusive Distributor" 
+                            className="w-full max-w-[120px] h-12 object-contain scale-90 group-hover:scale-110 transition-transform duration-500"
+                        />
+                    </div>
+                    
+                    {/* Hãng 2: FUZRR */}
+                    <div className="bg-white rounded-xl p-4 sm:p-6 flex flex-col items-center justify-center border-2 border-transparent hover:border-[#ea580c]/50 shadow-lg group transition-all duration-300 cursor-pointer">
+                        <img 
+                            src="https://fuzrr.com/wp-content/uploads/2024/04/logo-2048x618.png" 
+                            alt="FUZRR Exclusive Distributor" 
+                            className="w-full max-w-[120px] h-12 object-contain scale-125 group-hover:scale-110 transition-transform duration-500"
+                        />
+                    </div>
+                </div>
+                
+            </div>
+        </div>
     </div>
-</div>
-                                </div>
-                            </section>
+</section>
 
                             {/* Giới Thiệu Ngắn */}
                             <section id="gioi-thieu" className="py-16 bg-white border-b border-slate-200 px-4 md:px-8">
