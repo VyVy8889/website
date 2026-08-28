@@ -127,7 +127,7 @@
                 ],
                 desc: `Máy đo tỷ số biến áp (Transformer turns ratio tester) là thiết bị thử nghiệm chuyên dụng áp dụng công nghệ vi xử lý tiên tiến cho việc tính toán đo lường và điều khiển tự động, giúp xác định chính xác, nhanh chóng tỷ số biến áp thực tế và tổ đấu dây của máy biến áp. Sản phẩm là công cụ quan trọng được ứng dụng rộng rãi trong ngành điện lực, cũng như tại các nhà máy sản xuất và đơn vị phân phối máy biến áp.
                 Thiết bị bao gồm máy chính, phần mềm giám sát, dây thử nghiệm và cáp truyền thông. Máy chính tích hợp pin sạc tiện dụng cho việc đo đạc thực địa, màn hình cảm ứng LCD màu khổ lớn hiển thị trực quan (hỗ trợ giao diện Anh/Trung), tính năng bảo vệ chống quá tải cổng đo cùng bộ nhớ dung lượng lớn lưu trữ 500 bộ dữ liệu. Phần mềm kết nối máy tính hỗ trợ đầy đủ các chức năng đọc, tra cứu, lưu trữ và xuất dữ liệu lịch sử đo đạc.`,
-                specsQuick: ['Dải đo: 0.9~10000', 'Độ chính xác: 0,2%', 'Nguồn điện: Pin sạc'],
+                specsQuick: ['Dải đo: 0.9~10000', 'Độ chính xác: 0,2%', 'Độ phân giải tối đa: 0.0001'],
                 features: [
                     'Đa dạng chế độ thử nghiệm: Thử nghiệm 1 pha, thử nghiệm 3 pha, thử nghiệm 3 pha mù (blind test), thử nghiệm kiểu Z-type.',
                     'Dung lượng lưu trữ dữ liệu lên tới 500 nhóm.',
@@ -1841,7 +1841,7 @@
                 ],
                 desc: `Máy đo điện trở vòng lặp (Loop resistance tester) — hay còn gọi là máy đo micro-ohm, máy đo điện trở tiếp điểm — là thiết bị thử nghiệm độ chính xác cao chuyên dụng để đo các giá trị điện trở siêu nhỏ (micro-ohm).
                 Sản phẩm được ứng dụng rộng rãi trong việc kiểm tra điện trở tiếp điểm của máy cắt hạ/cao áp, cầu dao cách ly, đo điện trở kết nối của các mối hàn kim loại, cũng như điện trở mạch vòng của dây dẫn và thanh cái kim loại. Thiết bị giúp đánh giá chính xác chất lượng tiếp xúc và độ tin cậy của hệ thống dẫn điện trong bảo trì, thí nghiệm thiết bị điện cao áp và nhà máy công nghiệp.`,
-                specsQuick: ['Dòng điện đầu ra: ≤5A, 10A, 30A, 50A, 80A, 100A, 200A', 'Dải đo: 0.10µΩ - 3500mΩ', 'Nguồn điện: Pin sạc'],
+                specsQuick: ['Dòng điện đầu ra: ≤5A, 10A, 30A, 50A, 80A, 100A, 200A, 220A', 'Dải đo: 0.10µΩ - 3500mΩ', 'Độ chính xác: ± (0.15% giá trị đọc + 0.5µΩ)'],
                 features: [
                     'Phương pháp đo: Phương pháp 4 dây .',
                     'Dải đo: 0.10µΩ - 3500mΩ.',
@@ -3184,7 +3184,7 @@
                                     <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
                                         
                                         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight text-white">
-                                            PRECISION - RELIABILITY  <br className="hidden sm:inline" />
+                                            PRECISE - RELIABLE  <br className="hidden sm:inline" />
                                     
                                         </h1>
 
@@ -3890,7 +3890,7 @@
                                 <p className="flex items-center gap-2"><i className="fa-solid fa-envelope text-brand-orange"></i><span>168energy.jsc@gmail.com</span></p>
                             </div>
                             
-                            {/* Cột 3: Chính sách & Hỗ trợ (Đã sửa) */}
+                            {/* Cột 3: Chính sách & Hỗ trợ */}
                             <div>
                                 <p className="font-bold text-white mb-3 text-sm">Chính sách & Hỗ trợ</p>
                                 <ul className="space-y-2 text-slate-400">
@@ -3906,6 +3906,48 @@
                             <p>© 2026 168 Energy - Công Ty Cổ Phần Năng Lượng Nhất Lộc Phát. All rights reserved.</p>
                         </div>
                     </footer>
+
+                    {/* ========================================== */}
+                    {/* KHỐI NÚT LIÊN HỆ TRÔI NỔI (FLOATING CONTACT) */}
+                    {/* ========================================== */}
+                    <div className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-[90] flex flex-col gap-3.5 items-end">
+                        
+                        {/* Nút Zalo */}
+                        <a 
+                            href="https://zalo.me/0936864028" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="w-12 h-12 md:w-14 md:h-14 bg-[#0068FF] text-white rounded-full flex items-center justify-center shadow-xl hover:scale-110 hover:-translate-y-1 transition-all duration-300 relative group"
+                        >
+                            <span className="font-extrabold text-[13px] md:text-[15px] tracking-wide">Zalo</span>
+                            
+                            {/* Tooltip Zalo */}
+                            <div className="absolute right-full mr-4 top-1/2 -translate-y-1/2 bg-white text-navy-900 text-xs font-bold px-3 py-2.5 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap border border-slate-100">
+                                Chat Zalo với chuyên gia
+                                <div className="absolute top-1/2 -translate-y-1/2 -right-1.5 w-3 h-3 bg-white rotate-45 border-r border-t border-slate-100"></div>
+                            </div>
+                        </a>
+
+                        {/* Nút Gọi Điện Hotline */}
+                        <a 
+                            href="tel:0936864028" 
+                            className="w-12 h-12 md:w-14 md:h-14 bg-emerald-500 text-white rounded-full flex items-center justify-center shadow-xl hover:scale-110 hover:-translate-y-1 transition-all duration-300 relative group"
+                        >
+                            {/* Hiệu ứng sóng tỏa ra (Ping) */}
+                            <div className="absolute inset-0 bg-emerald-500 rounded-full animate-ping opacity-60"></div>
+                            
+                            {/* Hiệu ứng rung điện thoại (Pulse) */}
+                            <i className="fa-solid fa-phone-volume text-lg md:text-xl relative z-10 animate-pulse"></i>
+                            
+                            {/* Tooltip Hotline */}
+                            <div className="absolute right-full mr-4 top-1/2 -translate-y-1/2 bg-white text-navy-900 text-xs font-bold px-3 py-2.5 rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap border border-slate-100">
+                                Hotline: 0936.864.028
+                                <div className="absolute top-1/2 -translate-y-1/2 -right-1.5 w-3 h-3 bg-white rotate-45 border-r border-t border-slate-100"></div>
+                            </div>
+                        </a>
+                    </div>
+                    {/* KẾT THÚC KHỐI NÚT TRÔI NỔI */}
+
                 </div>
             );
         }
