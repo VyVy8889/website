@@ -3304,46 +3304,52 @@
     </div>
 
     {/* Filter & Search */}
-    <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-8">
-        <div className="flex flex-wrap gap-2 w-full md:w-auto">
-            {[
-                { id: 'all', label: 'Tất cả sản phẩm' },
-                { id: 'tiepdia', label: 'Đo điện trở tiếp địa' },
-                { id: 'cachdien', label: 'Đo điện trở cách điện' },
-                { id: 'capngam', label: 'Dò cáp ngầm' },
-                { id: 'chatluongdiennang', label: 'Chất lượng điện năng' },
-                { id: 'tiso', label: 'Đo tỉ số biến' },
-                { id: 'caoap', label: 'Máy thử cao áp' },
-                { id: 'motchieu', label: 'Đo điện trở một chiều' },
-                { id: 'tiepxuc', label: 'Đo điện trở tiếp xúc' },
-                { id: 'vannang', label: 'Đồng hồ vạn năng/ Ampe kìm' },
-                { id: 'khac', label: 'Thiết bị khác' },
-            ].map(tab => (
-                <button
-                    key={tab.id}
-                    onClick={() => setSelectedCategory(tab.id)}
-                    className={`px-4 py-2 rounded-lg text-xs font-semibold transition ${
-                        selectedCategory === tab.id
-                            ? 'bg-navy-900 text-white shadow-md'
-                            : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
-                    }`}
-                >
-                    {tab.label}
-                </button>
-            ))}
+<div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-8">
+    
+    {/* ĐÃ ĐỔI THÀNH DROPDOWN (MENU THẢ XUỐNG) */}
+    <div className="relative w-full sm:w-auto min-w-[260px] group">
+        {/* Icon danh mục bên trái */}
+        <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
+            <i className="fa-solid fa-layer-group text-brand-orange text-sm"></i>
         </div>
+        
+        {/* Thẻ select native được custom CSS */}
+        <select
+            value={selectedCategory}
+            onChange={(e) => setSelectedCategory(e.target.value)}
+            className="w-full pl-10 pr-10 py-3 bg-white border-2 border-slate-200 rounded-xl text-sm text-navy-900 font-bold focus:outline-none focus:border-brand-orange appearance-none cursor-pointer shadow-sm hover:border-brand-orange/50 transition-colors"
+        >
+            <option value="all">Tất cả sản phẩm</option>
+            <option value="tiepdia">Đo điện trở tiếp địa</option>
+            <option value="cachdien">Đo điện trở cách điện</option>
+            <option value="capngam">Dò cáp ngầm</option>
+            <option value="chatluongdiennang">Chất lượng điện năng</option>
+            <option value="tiso">Đo tỉ số biến</option>
+            <option value="caoap">Máy thử cao áp</option>
+            <option value="motchieu">Đo điện trở một chiều</option>
+            <option value="tiepxuc">Đo điện trở tiếp xúc</option>
+            <option value="vannang">Đồng hồ vạn năng / Ampe kìm</option>
+            <option value="khac">Thiết bị khác</option>
+        </select>
 
-        <div className="relative w-full md:w-64">
-            <input
-                type="text"
-                placeholder="Tìm kiếm"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-9 pr-4 py-2 bg-white border border-slate-200 rounded-lg text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-orange"
-            />
-            <i className="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-slate-400 text-xs"></i>
+        {/* Mũi tên chĩa xuống bên phải (Thay thế mũi tên mặc định xấu xí của trình duyệt) */}
+        <div className="absolute inset-y-0 right-0 flex items-center pr-3.5 pointer-events-none">
+            <i className="fa-solid fa-chevron-down text-slate-400 text-xs group-hover:text-brand-orange transition-colors"></i>
         </div>
     </div>
+
+    {/* Thanh tìm kiếm */}
+    <div className="relative w-full sm:w-80 flex-shrink-0 group">
+        <input
+            type="text"
+            placeholder="Tìm kiếm mã hoặc tên thiết bị..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full pl-10 pr-4 py-3 bg-white border-2 border-slate-200 rounded-xl text-sm text-slate-800 focus:outline-none focus:border-brand-orange shadow-sm hover:border-brand-orange/50 transition-colors"
+        />
+        <i className="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-slate-400 text-sm group-hover:text-brand-orange transition-colors"></i>
+    </div>
+</div>
 
     {/* Product Grid */}
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
