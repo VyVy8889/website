@@ -118,7 +118,7 @@
                 brand: 'FUZRR',
                 warranty: '12 tháng (1 đổi 1 trong 30 ngày)',
                 status: 'Sẵn hàng tại kho',
-                image: 'https://fuzrr.com/wp-content/uploads/2026/02/ES6030-EN.jpg',
+                image: 'https://fuzrr.com/wp-content/uploads/2026/02/ES6030_1-EN.jpg',
                 gallery: [
                     'https://fuzrr.com/wp-content/uploads/2026/02/ES6030-EN.jpg',
                     'https://fuzrr.com/wp-content/uploads/2026/02/ES6030_1-EN.jpg',
@@ -1007,7 +1007,7 @@
                 brand: 'FUZRR',
                 warranty: '12 tháng',
                 status: 'Sẵn hàng',
-                image: 'https://fuzrr.com/wp-content/uploads/2026/02/ES3072.jpg',
+                image: 'https://fuzrr.com/wp-content/uploads/2026/02/ES3072_1.jpg',
                 gallery: [
                     'https://fuzrr.com/wp-content/uploads/2026/02/ES3072.jpg',
                     'https://fuzrr.com/wp-content/uploads/2026/02/ES3072_1.jpg',
@@ -1832,7 +1832,7 @@
                 brand: 'FUZRR',
                 warranty: '12 tháng (1 đổi 1 trong 30 ngày)',
                 status: 'Sẵn hàng tại kho',
-                image: 'https://fuzrr.com/wp-content/uploads/2025/04/ES3090-EN.webp',
+                image: 'https://fuzrr.com/wp-content/uploads/2025/04/ES3090_1-EN.webp',
                 gallery: [
                     'https://fuzrr.com/wp-content/uploads/2025/04/ES3090-EN.webp',
                     'https://fuzrr.com/wp-content/uploads/2025/04/ES3090_1-EN.webp',
@@ -2918,8 +2918,8 @@
         },
         { 
         id: 'cert-3', 
-        title: 'ISO 9001:2015', 
-        image: 'https://github.com/VyVy8889/website/blob/main/images/ISO%20168.png?raw=true' // <-- BẠN DÁN LINK ẢNH VÀO ĐÂY
+        title: 'Chứng nhận Trung tâm Bảo hành', 
+        image: 'https://link-anh-giay-chung-nhan-2.jpg' // <-- BẠN DÁN LINK ẢNH VÀO ĐÂY
         }
         ];
         const CLIENTS = [
@@ -3049,12 +3049,43 @@
             const [activeTab, setActiveTab] = useState('features');
             const [activeImage, setActiveImage] = useState(0);
 
-            const filteredProducts = PRODUCTS.filter(p => {
-                const matchesCategory = selectedCategory === 'all' || p.category === selectedCategory;
-                const matchesSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                                     p.id.toLowerCase().includes(searchQuery.toLowerCase());
-                return matchesCategory && matchesSearch;
-            });
+            // ĐIỀN MÃ CÁC SẢN PHẨM BẠN MUỐN GHIM LÊN ĐẦU VÀO ĐÂY
+            const pinnedProductIds = ['ES6030', 'ES3090', 'BYQ5kVA', 'ES3072']; 
+
+            //  LỌC, GHIM VÀ TRỘN NGẪU NHIÊN SẢN PHẨM
+            const filteredProducts = React.useMemo(() => {
+                // 1. Lọc theo tab danh mục và thanh tìm kiếm trước
+                const filtered = PRODUCTS.filter(p => {
+                    const matchesCategory = selectedCategory === 'all' || p.category === selectedCategory;
+                    const matchesSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                                         p.id.toLowerCase().includes(searchQuery.toLowerCase());
+                    return matchesCategory && matchesSearch;
+                });
+
+                // 2. Tách mảng thành 2 nhóm: "Ghim" và "Còn lại"
+                const pinned = [];
+                const others = [];
+
+                filtered.forEach(p => {
+                    if (pinnedProductIds.includes(p.id)) {
+                        pinned.push(p);
+                    } else {
+                        others.push(p);
+                    }
+                });
+
+                // 3. Sắp xếp nhóm "Ghim" theo đúng thứ tự bạn đã điền ở danh sách pinnedProductIds
+                pinned.sort((a, b) => pinnedProductIds.indexOf(a.id) - pinnedProductIds.indexOf(b.id));
+
+                // 4. Trộn ngẫu nhiên nhóm "Còn lại" (Thuật toán Fisher-Yates)
+                for (let i = others.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [others[i], others[j]] = [others[j], others[i]];
+                }
+
+                // 5. Ghép 2 nhóm lại với nhau và trả về kết quả
+                return [...pinned, ...others];
+            }, [selectedCategory, searchQuery]); // Ghi nhớ: Chỉ trộn lại khi người dùng đổi tab hoặc gõ tìm kiếm
 
             const currentProduct = PRODUCTS.find(p => p.id === selectedProductId) || PRODUCTS[0];
 
@@ -3127,8 +3158,8 @@
             </button>
             <a href="#gioi-thieu" onClick={() => setView('home')} className="hover:text-brand-orange transition">Giới thiệu</a>
             <a href="#san-pham" onClick={() => setView('home')} className="hover:text-brand-orange transition">Sản phẩm</a>
-            <a href="#dich-vu" onClick={() => setView('home')} className="hover:text-brand-orange transition">Dịch vụ kỹ thuật</a>
-            <a href="#khach-hang" onClick={() => setView('home')} className="hover:text-brand-orange transition">Khách hàng & Dự án</a>
+            <a href="#dich-vu" onClick={() => setView('home')} className="hover:text-brand-orange transition">Dịch vụ</a>
+            <a href="#khach-hang" onClick={() => setView('home')} className="hover:text-brand-orange transition">Đối tác</a>
         </nav>
 
         <div className="flex items-center gap-3">
@@ -3153,7 +3184,7 @@
                                     <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
                                         
                                         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight text-white">
-                                            PRECISION - RELIABILITY  <br className="hidden sm:inline" />
+                                            PRECISE - RELIABLE  <br className="hidden sm:inline" />
                                     
                                         </h1>
 
