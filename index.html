@@ -105,25 +105,6 @@
 
     <script type="text/babel">
         const { useState } = React;
-        // BÊN TRONG COMPONENT CHÍNH CỦA BẠN (Ví dụ: function App() { ... })
-
-React.useEffect(() => {
-    // 1. Lấy tham số 'product' từ đường dẫn URL (ví dụ: ?product=ES3030)
-    const urlParams = new URLSearchParams(window.location.search);
-    const productIdFromUrl = urlParams.get('product');
-
-    // 2. Nếu có tham số trên URL, tìm sản phẩm khớp mã trong danh sách products
-    if (productIdFromUrl && products && products.length > 0) {
-        const matchedProduct = products.find(p => p.id === productIdFromUrl);
-        if (matchedProduct) {
-            // Gán sản phẩm cần xem và mở Modal chi tiết lên
-            setSelectedProduct(matchedProduct);
-            setIsDetailOpen(true); // Hoặc tên hàm/state mở modal chi tiết của bạn
-        }
-    }
-}, []); // Chạy 1 lần duy nhất khi trang web vừa tải xong
-
-
         // Dữ liệu sản phẩm
         const PRODUCTS = [
             {
@@ -2986,6 +2967,30 @@ React.useEffect(() => {
         ];
 
         function App() {
+
+    // Các dòng useState sẵn có của bạn ở đây...
+
+    // =========================================================
+    // DÁN ĐOẠN NÀY VÀO TRONG FUNCTION APP():
+    // =========================================================
+    React.useEffect(() => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const productIdFromUrl = urlParams.get('product');
+
+        // Sửa thành PRODUCTS (viết hoa theo đúng dòng 128 trong ảnh của bạn)
+        if (productIdFromUrl && typeof PRODUCTS !== 'undefined' && PRODUCTS.length > 0) {
+            const matchedProduct = PRODUCTS.find(p => p.id === productIdFromUrl);
+            if (matchedProduct) {
+                setSelectedProduct(matchedProduct);
+                setIsDetailOpen(true);
+            }
+        }
+    }, []);
+    // =========================================================
+
+    // Phần return (...) bên dưới giữ nguyên
+}
+
             const [quoteProduct, setQuoteProduct] = useState('');
             const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
             const [view, setView] = useState('home'); // 'home' hoặc 'detail'
