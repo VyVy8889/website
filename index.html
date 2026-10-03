@@ -105,6 +105,24 @@
 
     <script type="text/babel">
         const { useState } = React;
+        // BÊN TRONG COMPONENT CHÍNH CỦA BẠN (Ví dụ: function App() { ... })
+
+React.useEffect(() => {
+    // 1. Lấy tham số 'product' từ đường dẫn URL (ví dụ: ?product=ES3030)
+    const urlParams = new URLSearchParams(window.location.search);
+    const productIdFromUrl = urlParams.get('product');
+
+    // 2. Nếu có tham số trên URL, tìm sản phẩm khớp mã trong danh sách products
+    if (productIdFromUrl && products && products.length > 0) {
+        const matchedProduct = products.find(p => p.id === productIdFromUrl);
+        if (matchedProduct) {
+            // Gán sản phẩm cần xem và mở Modal chi tiết lên
+            setSelectedProduct(matchedProduct);
+            setIsDetailOpen(true); // Hoặc tên hàm/state mở modal chi tiết của bạn
+        }
+    }
+}, []); // Chạy 1 lần duy nhất khi trang web vừa tải xong
+
 
         // Dữ liệu sản phẩm
         const PRODUCTS = [
