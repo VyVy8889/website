@@ -2980,17 +2980,6 @@
             const [quoteProductName, setQuoteProductName] = useState('');
             const [formSubmitted, setFormSubmitted] = useState(false);
             const [activePolicy, setActivePolicy] = useState(null);
-            React.useEffect(() => {
-        const urlParams = new URLSearchParams(window.location.search);
-        const productIdFromUrl = urlParams.get('product');
-        if (productIdFromUrl && typeof PRODUCTS !== 'undefined' && PRODUCTS.length > 0) {
-            const matchedProduct = PRODUCTS.find(p => p.id === productIdFromUrl);
-            if (matchedProduct) {
-                setSelectedProduct(matchedProduct);
-                setIsDetailOpen(true);
-            }
-        }
-    }, [
             const POLICIES_DATA = {
                 warranty: {
                     title: "Chính sách bảo hành & Đổi trả",
