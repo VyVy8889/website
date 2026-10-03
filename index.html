@@ -2967,6 +2967,27 @@
         ];
 
         function App() {
+    // Các dòng useState sẵn có của bạn ở đây...
+
+    // =========================================================
+    // DÁN ĐOẠN NÀY VÀO TRONG FUNCTION APP():
+    // =========================================================
+    React.useEffect(() => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const productIdFromUrl = urlParams.get('product');
+
+        // Sửa thành PRODUCTS (viết hoa theo đúng dòng 128 trong ảnh của bạn)
+        if (productIdFromUrl && typeof PRODUCTS !== 'undefined' && PRODUCTS.length > 0) {
+            const matchedProduct = PRODUCTS.find(p => p.id === productIdFromUrl);
+            if (matchedProduct) {
+                setSelectedProduct(matchedProduct);
+                setIsDetailOpen(true);
+            }
+        }
+    }, []);
+    // =========================================================
+
+    // Phần return (...) bên dưới giữ nguyên
             const [quoteProduct, setQuoteProduct] = useState('');
             const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
             const [view, setView] = useState('home'); // 'home' hoặc 'detail'
