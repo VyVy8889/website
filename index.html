@@ -2981,18 +2981,26 @@
             const [formSubmitted, setFormSubmitted] = useState(false);
             const [activePolicy, setActivePolicy] = useState(null);
             React.useEffect(() => {
-        const urlParams = new URLSearchParams(window.location.search);
-        const productIdFromUrl = urlParams.get('product');
+    // 1. Lấy mã sản phẩm từ URL (ví dụ: lấy chữ 'ES6030' từ ?product=ES6030)
+    const urlParams = new URLSearchParams(window.location.search);
+    const productIdFromUrl = urlParams.get('product');
 
-        if (productIdFromUrl && typeof PRODUCTS !== 'undefined' && PRODUCTS.length > 0) {
-            const matchedProduct = PRODUCTS.find(p => p.id === productIdFromUrl);
-            if (matchedProduct) {
-                if (typeof setSelectedProduct === 'function') setSelectedProduct(matchedProduct);
-                if (typeof setSelectedProductId === 'function') setSelectedProductId(matchedProduct.id);
-                if (typeof setIsDetailOpen === 'function') setIsDetailOpen(true);
-            }
+    // 2. Nếu có mã trên URL và danh sách PRODUCTS tồn tại
+    if (productIdFromUrl && typeof PRODUCTS !== 'undefined' && PRODUCTS.length > 0) {
+        // Kiểm tra xem mã sản phẩm trên URL có nằm trong mảng PRODUCTS không
+        const matchedProduct = PRODUCTS.find(p => p.id === productIdFromUrl);
+        
+        if (matchedProduct) {
+            // Thiết lập trạng thái đúng theo app của bạn:
+            if (typeof setSelectedProductId === 'function') setSelectedProductId(matchedProduct.id);
+            if (typeof setActiveImage === 'function') setActiveImage(0);
+            if (typeof setActiveTab === 'function') setActiveTab('features');
+            if (typeof setView === 'function') setView('detail'); // Bắt buộc dòng này để chuyển từ 'home' sang 'detail'
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-    }, []);
+    }
+}, []);
             const POLICIES_DATA = {
                 warranty: {
                     title: "Chính sách bảo hành & Đổi trả",
